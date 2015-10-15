@@ -1,0 +1,3 @@
+[submodule "grafana-docker"]
+	path = grafana-docker
+	url = https://github.com/aykamko/grafana-docker
