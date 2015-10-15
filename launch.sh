@@ -9,10 +9,4 @@ docker run -d --name influxdb -p 8083:8083 -p 8086:8086 \
 docker run -d --name grafana -p 8080:3000 \
     --link influxdb:influxdbhost \
     -v $(echo "$(pwd)/${E2_GRAFANA_SQLITE_MOUNT:-grafanadb}"):/var/lib/grafana \
-    -e INFLUXDB_HOST=influxdbhost \
-    -e INFLUXDB_PORT=8086 \
-    -e INFLUXDB_DASH_NAME=E2 \
-    -e INFLUXDB_NAME=e2_influxdb \
-    -e INFLUXDB_USER=root \
-    -e INFLUXDB_PASS=root \
     aykamko/e2-grafana:latest

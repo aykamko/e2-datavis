@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+
+RUNDIR=/var/run/grafana
+PIDFILE=$RUNDIR/grafana.pid
+
+mkdir -p $RUNDIR
+touch $PIDFILE
+chmod 755 $RUNDIR
+
+exec /usr/sbin/grafana-server \
+    -homepath=/usr/share/grafana \
+    -config=/etc/grafana/grafana.ini \
+    -pidfile=$PIDFILE \
+    cfg:default.paths.data=/var/lib/grafana \
+    cfg:default.paths.logs=/var/log/grafana
