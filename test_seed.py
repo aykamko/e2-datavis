@@ -1,3 +1,4 @@
+# TODO: pip install
 from influxdb import client as idb
 from datetime import datetime, timedelta
 from random import random

@@ -13,4 +13,5 @@ exec /usr/sbin/grafana-server \
     -config=/etc/grafana/grafana.ini \
     -pidfile=$PIDFILE \
     cfg:default.paths.data=/var/lib/grafana \
+    cfg:default.database.path=/var/lib/grafana/grafana.db \
     cfg:default.paths.logs=/var/log/grafana
