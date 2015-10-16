@@ -12,12 +12,12 @@ fi
 DAEMON_RETRIES=5
 
 add_influxdb_source() {
-    local code success payload
+    local resp success payload
     success=0
     for i in $(eval echo "{1..$DAEMON_RETRIES}"); do
         sleep 1
-        code=$(curl "http://admin:admin@localhost:3000/api/datasources" 2>/dev/null)
-        if [ $? -eq 0 ] && [[ ! "${code}" =~ "404" ]]; then
+        resp=$(curl "http://admin:admin@localhost:3000/api/datasources" 2>/dev/null)
+        if [ $? -eq 0 ] && [[ ! "${resp}" =~ "404" ]]; then
             success=1
             break
         fi
@@ -42,24 +42,25 @@ add_influxdb_source() {
     }
 EOP
 
-    code=$(curl "http://admin:admin@localhost:3000/api/datasources" \
+    resp=$(curl "http://admin:admin@localhost:3000/api/datasources" \
             -X POST \
             -H 'Content-Type: application/json;charset=UTF-8' \
             --data-binary "${payload}" 2>/dev/null)
 
-    if [ $? -eq 1 ] || [[ "${code}" =~ "404" ]]; then
+    if [ $? -eq 1 ] || [[ "${resp}" =~ "404" ]]; then
         echo "=> Failed to configure InfluxDB!"
-        echo "Response: ${code}"
+        echo "Response: ${resp}"
         exit 1
     fi
 
-    echo "=> InfluxDB has been configured as follows:"
-    echo "   InfluxDB ADDRESS:  ${INFLUXDB_HOST}"
-    echo "   InfluxDB PORT:     ${INFLUXDB_PORT}"
-    echo "   InfluxDB DB NAME:  ${INFLUXDB_NAME}"
-    echo "   InfluxDB USERNAME: ${INFLUXDB_USER}"
-    echo "   InfluxDB PASSWORD: ${INFLUXDB_PASS}"
-    echo "   ** Please check your environment variables if you find something is misconfigured. **"
+    echo "=> Default InfluxDB data source has been configured as follows:"
+    echo "   SOURCE NAME: ${GRAFANA_INFLUXDB_SOURCE_NAME}"
+    echo "   HOST:        ${INFLUXDB_HOST}"
+    echo "   PORT:        ${INFLUXDB_PORT}"
+    echo "   DB NAME:     ${INFLUXDB_NAME}"
+    echo "   DB USER:     ${INFLUXDB_USER}"
+    echo "   DB PASS:     ${INFLUXDB_PASS}"
+    echo "** Please check your environment variables if you find something is misconfigured. **"
 }
 
 echo "=> Spawning daemon to hit Grafana API. (Will retry ${DAEMON_RETRIES} times)"
