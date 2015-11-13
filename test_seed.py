@@ -1,4 +1,3 @@
-# TODO: pip install
 from influxdb import client as idb
 from datetime import datetime, timedelta
 from random import random
@@ -14,6 +13,8 @@ now = datetime.utcnow()
 minutes = 120
 test_data = []
 for i in range(minutes):
+
+    # Appending Random Values for CPU Load
     test_data.append({
         'measurement': 'cpu_load_short',
         'time': (now - timedelta(minutes=i)),
@@ -22,5 +23,54 @@ for i in range(minutes):
         }
     })
 
+
+    # Appending Random Values for CPU Load
+    test_data.append({
+        'measurement': 'throughputBytes',
+        'time': (now - timedelta(minutes=i)),
+        'fields': {
+            'value': random()
+        }
+    })
+
+    # Appending Random Values for CPU Load
+    test_data.append({
+        'measurement': 'throughputPackets',
+        'time': (now - timedelta(minutes=i)),
+        'fields': {
+            'value': random()
+        }
+    })
+
+    # Appending Random Values for CPU Load
+    test_data.append({
+        'measurement': 'queueLength',
+        'time': (now - timedelta(minutes=i)),
+        'fields': {
+            'value': random()
+        }
+    })
+
+    # Appending Random Values for CPU Load
+    test_data.append({
+        'measurement': 'numInstances',
+        'time': (now - timedelta(minutes=i)),
+        'fields': {
+            'value': random()
+        }
+    })
+
+    # Appending Random Values for CPU Load
+    test_data.append({
+        'measurement': 'numInstancesTotal',
+        'time': (now - timedelta(minutes=i)),
+        'fields': {
+            'value': random()
+        }
+    })
+
+# Writing to the DataBase
 if client.write_points(test_data, tags={'host': 'server01', 'region': 'us-west'}):
     print 'Success!'
+else:
+    print 'Failure!'
