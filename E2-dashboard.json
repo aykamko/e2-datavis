@@ -1,0 +1,397 @@
+{
+  "id": 1,
+  "title": "E2",
+  "originalTitle": "New dashboard",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "height": "",
+          "id": 1,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "machine2_nf",
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupByTags": [],
+              "measurement": "nf_instances",
+              "query": "SELECT mean(value) FROM \"nf_instances\" WHERE \"machine\" = 'machine2' AND $timeFilter GROUP BY time($interval)",
+              "tags": [
+                {
+                  "key": "machine",
+                  "operator": "=",
+                  "value": "machine2"
+                }
+              ]
+            },
+            {
+              "alias": "machine3_nf",
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupByTags": [],
+              "measurement": "nf_instances",
+              "query": "SELECT mean(value) FROM \"nf_instances\" WHERE \"machine\" = 'machine3' AND $timeFilter GROUP BY time($interval)",
+              "tags": [
+                {
+                  "key": "machine",
+                  "operator": "=",
+                  "value": "machine3"
+                }
+              ]
+            },
+            {
+              "alias": "machine4_nf",
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupByTags": [],
+              "measurement": "nf_instances",
+              "query": "SELECT mean(value) FROM \"nf_instances\" WHERE \"machine\" = 'machine4' AND $timeFilter GROUP BY time($interval)",
+              "rawQuery": false,
+              "tags": [
+                {
+                  "key": "machine",
+                  "operator": "=",
+                  "value": "machine4"
+                }
+              ]
+            },
+            {
+              "alias": "avg_nf",
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupByTags": [],
+              "measurement": "nf_instances",
+              "query": "SELECT mean(value) FROM \"nf_instances\" WHERE $timeFilter GROUP BY time($interval)",
+              "tags": [],
+              "target": ""
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "NF Instances",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "transparent": false,
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ]
+        }
+      ],
+      "title": "Row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 2,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "machine2_avg_qlength",
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupByTags": [],
+              "measurement": "queue_length",
+              "query": "SELECT mean(value) FROM \"queue_length\" WHERE \"machine\" = 'machine2' AND $timeFilter GROUP BY time($interval)",
+              "tags": [
+                {
+                  "key": "machine",
+                  "operator": "=",
+                  "value": "machine2"
+                }
+              ]
+            },
+            {
+              "alias": "avg_qlength",
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupByTags": [],
+              "measurement": "queue_length",
+              "query": "SELECT mean(value) FROM \"queue_length\" WHERE $timeFilter GROUP BY time($interval)",
+              "tags": [],
+              "target": ""
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "VPort Queue Length",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ]
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 3,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "machine2_cpu",
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupByTags": [],
+              "measurement": "cpu_load_short",
+              "query": "SELECT mean(value) FROM \"cpu_load_short\" WHERE \"machine\" = 'machine2' AND $timeFilter GROUP BY time($interval)",
+              "rawQuery": false,
+              "tags": [
+                {
+                  "key": "machine",
+                  "operator": "=",
+                  "value": "machine2"
+                }
+              ]
+            },
+            {
+              "alias": "avg_cpu",
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupByTags": [],
+              "measurement": "cpu_load_short",
+              "query": "SELECT mean(value) FROM \"cpu_load_short\" WHERE $timeFilter GROUP BY time($interval)",
+              "tags": [],
+              "target": ""
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "no title (click here)",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ]
+        }
+      ],
+      "title": "New row"
+    }
+  ],
+  "nav": [
+    {
+      "collapse": false,
+      "enable": true,
+      "notice": false,
+      "now": false,
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "status": "Stable",
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ],
+      "type": "timepicker"
+    }
+  ],
+  "time": {
+    "from": "2015-11-13T20:45:13.913Z",
+    "to": "2015-11-13T22:54:51.788Z"
+  },
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": []
+  },
+  "schemaVersion": 6,
+  "version": 0,
+  "links": []
+}
